@@ -30,78 +30,50 @@ class _V1State extends State<V1> {
     });
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+@override
+Widget build(BuildContext context) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Row(
         children: [
-          const SizedBox(height: 16.0),
-
-          Row(
-            children: [
-              const Text("Width: "),
-              Text(
-                _width.toStringAsFixed(2),
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
-          Slider(
-            value: _width,
-            min: 20,
-            max: 300,
-            onChanged: _onChangeWidth,
-          ),
-
-          Row(
-            children: [
-              const Text("Height: "),
-              Text(
-                _height.toStringAsFixed(2),
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
-          Slider(
-            value: _height,
-            min: 20,
-            max: 300,
-            onChanged: _onChangeHeight,
-          ),
-
-          Row(
-            children: [
-              const Text("Top Right Radius: "),
-              Text(
-                _topRightRadius.toStringAsFixed(2),
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
-          Slider(
-            value: _topRightRadius,
-            min: 0,
-            max: 150,
-            onChanged: _onChangeTopRightRadius,
-          ),
-
-          const SizedBox(height: 32.0),
-
-          Center(
-            child: Container(
-              width: _width,
-              height: _height,
-              decoration: BoxDecoration(
-                color: Colors.red,
-                borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(_topRightRadius),
-                ),
-              ),
-            ),
-          ),
+          const Text("Width: "),
+          Text(_width.toStringAsFixed(2), style: const TextStyle(fontWeight: FontWeight.bold)),
         ],
       ),
-    );
-  }
+      Slider(value: _width, min: 10, max: 180, onChanged: _onChangeWidth),
+
+      Row(
+        children: [
+          const Text("Height: "),
+          Text(_height.toStringAsFixed(2), style: const TextStyle(fontWeight: FontWeight.bold)),
+        ],
+      ),
+      Slider(value: _height, min: 10, max: 180, onChanged: _onChangeHeight),
+
+      Row(
+        children: [
+          const Text("Top Right Radius: "),
+          Text(_topRightRadius.toStringAsFixed(2), style: const TextStyle(fontWeight: FontWeight.bold)),
+        ],
+      ),
+      Slider(value: _topRightRadius, min: 0, max: 100, onChanged: _onChangeTopRightRadius),
+
+      const SizedBox(height: 16.0),
+
+      Center(
+        child: Container(
+          width: _width,
+          height: _height,
+          decoration: BoxDecoration(
+            color: Colors.red,
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(_topRightRadius),
+            ),
+          ),
+        ),
+      ),
+    ],
+  );
+}
 }
